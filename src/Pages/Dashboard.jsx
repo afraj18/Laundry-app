@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Layout, Menu } from "antd";
+import { Layout, Menu, Statistic, Row, Col } from "antd";
 import { Link } from "react-router-dom";
 import { PieChartOutlined, UserOutlined } from "@ant-design/icons";
 import PieChartComponent from "../Components/PieChart";
@@ -58,6 +58,44 @@ const Dashboard = () => {
         <Content style={{ margin: "16px" }}>
           <div>
             <h1>Dashboard</h1>
+            <Row gutter={[16, 16]}>
+              <Col span={6}>
+                <div style={{ padding: 16, background: "#fff" }}>
+                  <Statistic
+                    title="Dry Cleaning Count"
+                    value={dryCleaningCount}
+                    prefix={<PieChartOutlined />}
+                  />
+                </div>
+              </Col>
+              <Col span={6}>
+                <div style={{ padding: 16, background: "#fff" }}>
+                  <Statistic
+                    title="Wash Only Count"
+                    value={washOnlyCount}
+                    prefix={<PieChartOutlined />}
+                  />
+                </div>
+              </Col>
+              <Col span={6}>
+                <div style={{ padding: 16, background: "#fff" }}>
+                  <Statistic
+                    title="Active"
+                    value={activeCount}
+                    prefix={<PieChartOutlined />}
+                  />
+                </div>
+              </Col>
+              <Col span={6}>
+                <div style={{ padding: 16, background: "#fff" }}>
+                  <Statistic
+                    title="Delivered"
+                    value={completeCount}
+                    prefix={<PieChartOutlined />}
+                  />
+                </div>
+              </Col>
+            </Row>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <PieChartComponent
                 data={serviceData}
