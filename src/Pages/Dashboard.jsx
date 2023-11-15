@@ -46,8 +46,9 @@ const Dashboard = () => {
     <Layout style={{ minHeight: "100vh" }}>
       <Sider width={200} theme="dark" collapsible>
         <Menu mode="inline" theme="dark">
-          <Menu.Item key="1" icon={<PieChartOutlined />}>
-            <Link to="/dashboard">Dashboard</Link>
+          <Menu.Item key="1">
+            <h3>LAUNDROCARE</h3>
+            <hr />
           </Menu.Item>
           <Menu.Item key="2" icon={<UserOutlined />}>
             <Link to="/orders">Order</Link>
