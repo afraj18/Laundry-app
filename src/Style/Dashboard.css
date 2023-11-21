@@ -1,0 +1,19 @@
+.piechart {
+  background-color: white;
+  margin: 2px;
+  padding: 5px;
+}
+.sideBar-SubHeading {
+  margin-left: 15px;
+  font-size: small;
+}
+
+.header {
+  background-color: white;
+}
+
+.StatsBox {
+  padding: 16px;
+  background-color: white;
+  margin: 5px 2px 15px;
+}

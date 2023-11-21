@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Layout, Menu, Statistic, Row, Col } from "antd";
-import { Link } from "react-router-dom";
-import { PieChartOutlined, UserOutlined } from "@ant-design/icons";
-import PieChartComponent from "../Components/PieChart";
+import { Layout } from "antd";
 
-const { Sider, Content } = Layout;
+import PieChartComponent from "../Components/DashBoardComponents/PieChart";
+import SideBar from "../Components/SideBar";
+import OrderStats from "../Components/DashBoardComponents/OrderStats";
+import HeaderComponent from "../Components/HeaderComponent";
+
+const { Content } = Layout;
 
 const Dashboard = () => {
   const [data, setData] = useState([]);
@@ -37,6 +39,7 @@ const Dashboard = () => {
   const completeCount = data.filter(
     (item) => item.status === "Completed"
   ).length;
+
   const statusData = [
     { type: "Active", value: activeCount },
     { type: "Completed", value: completeCount },
@@ -44,70 +47,28 @@ const Dashboard = () => {
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
-      <Sider width={200} theme="dark" collapsible>
-        <Menu mode="inline" theme="dark">
-          <Menu.Item key="1">
-            <h3>LAUNDROCARE</h3>
-            <hr />
-          </Menu.Item>
-          <Menu.Item key="2" icon={<UserOutlined />}>
-            <Link to="/orders">Order</Link>
-          </Menu.Item>
-        </Menu>
-      </Sider>
+      <SideBar />
       <Layout className="site-layout">
+        <HeaderComponent />
         <Content style={{ margin: "16px" }}>
           <div>
-            <h1>Dashboard</h1>
-            <Row gutter={[16, 16]}>
-              <Col span={6}>
-                <div style={{ padding: 16, background: "#fff" }}>
-                  <Statistic
-                    title="Dry Cleaning Count"
-                    value={dryCleaningCount}
-                    prefix={<PieChartOutlined />}
-                  />
-                </div>
-              </Col>
-              <Col span={6}>
-                <div style={{ padding: 16, background: "#fff" }}>
-                  <Statistic
-                    title="Wash Only Count"
-                    value={washOnlyCount}
-                    prefix={<PieChartOutlined />}
-                  />
-                </div>
-              </Col>
-              <Col span={6}>
-                <div style={{ padding: 16, background: "#fff" }}>
-                  <Statistic
-                    title="Active"
-                    value={activeCount}
-                    prefix={<PieChartOutlined />}
-                  />
-                </div>
-              </Col>
-              <Col span={6}>
-                <div style={{ padding: 16, background: "#fff" }}>
-                  <Statistic
-                    title="Delivered"
-                    value={completeCount}
-                    prefix={<PieChartOutlined />}
-                  />
-                </div>
-              </Col>
-            </Row>
+            <OrderStats
+              dryCleaningCount={dryCleaningCount}
+              washOnlyCount={washOnlyCount}
+              activeCount={activeCount}
+              completeCount={completeCount}
+            />
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <PieChartComponent
                 data={serviceData}
                 className="piechart"
                 title="Service Types"
-                colors={["#1890ff", "#52c41a"]}
+                colors={["#37a2ec", "#44bc84"]}
               />
               <PieChartComponent
                 data={statusData}
                 title="Service"
-                colors={["#1890ff", "#52c41a"]}
+                colors={["#37a2ec", "#44bc84"]}
               />
             </div>
           </div>

@@ -7,22 +7,21 @@ import {
   Legend,
   Tooltip,
 } from "recharts";
-import "./../Pages/Dashboard.css";
+import "./../../Style/Dashboard.css";
 
 const PieChartComponent = ({ data, title, colors }) => {
   return (
-    <div className="piechart" style={{ width: "100%" }}>
+    <div className="piechart" style={{ width: "50%", marginRight: "15px" }}>
       <h2>{title}</h2>
       <hr />
-      <ResponsiveContainer width="100%" height={300}>
+      <ResponsiveContainer width="100%" height={330}>
         <PieChart>
           <Pie
             data={data}
             dataKey="value"
             nameKey="type"
-            outerRadius={80}
+            outerRadius={140}
             fill="#8884d8"
-            label
           >
             {colors &&
               colors.map((color, index) => (

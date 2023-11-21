@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import OrderTableComponent from "../Components/OrderTableComponent";
+import OrderTableComponent from "../Components/OrderComponents/OrderTableComponent";
+import { Layout } from "antd";
+import SideBar from "../Components/SideBar";
+import HeaderComponent from "../Components/HeaderComponent";
+const { Content } = Layout;
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
@@ -17,10 +21,15 @@ const Orders = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Orders</h1>
-      <OrderTableComponent orders={orders} />
-    </div>
+    <Layout style={{ minHeight: "100vh" }}>
+      <SideBar />
+      <Layout className="site-layout">
+        <HeaderComponent />
+        <Content style={{ margin: "16px" }}>
+          <OrderTableComponent orders={orders} />
+        </Content>
+      </Layout>
+    </Layout>
   );
 };
 
